@@ -6,7 +6,7 @@ import java.util.*
 fun main(args : Array<String>) {
 
 
-    val s = Scanner(File("resources/2017/input_1_1.txt")!!).useDelimiter("")
+    val s = Scanner(File("resources/2017/input_1.txt")!!).useDelimiter("")
 
     val first = Integer.parseInt(s.next())
     var prev = first

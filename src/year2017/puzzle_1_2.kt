@@ -7,7 +7,7 @@ import kotlin.collections.ArrayList
 fun main(args : Array<String>) {
 
     var sum = 0
-    val s = Scanner(File("resources/2017/input_1_2.txt")!!).useDelimiter("")
+    val s = Scanner(File("resources/2017/input_1.txt")!!).useDelimiter("")
     val digits = ArrayList<Integer>()
 
     while(s.hasNext()) {

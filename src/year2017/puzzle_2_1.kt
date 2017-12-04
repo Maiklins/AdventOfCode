@@ -7,7 +7,7 @@ import kotlin.collections.ArrayList
 fun main(args : Array<String>) {
 
     var sum = 0
-    val s = Scanner(File("resources/2017/input_2_1.txt")!!)
+    val s = Scanner(File("resources/2017/input_2.txt")!!)
     var min : Int
     var max : Int
 
