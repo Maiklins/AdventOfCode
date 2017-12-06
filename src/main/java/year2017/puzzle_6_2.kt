@@ -10,59 +10,21 @@ fun main(args : Array<String>) {
     val memory = IntArray(mSize)
     val states = HashSet<String>()
 
-    for(i in 0 .. (mSize - 1)) {
+    for(i in 0 until mSize) {
         memory[i] = s.nextInt()
     }
 
-    //iterate
+    states.add(memory.joinToString())
+    do {
+        val hash = nextHash(memory)
+    } while ( if(states.contains(hash) ) false else {states.add(hash); true} )
 
-    var secondRound = false
-    var stateToFind = ""
-    var lCycle = 1
-
-
-    while(true) {
-        var max = 0
-        var iMax = 0
-        memory.forEachIndexed { i, m ->
-            if (m > max) {
-                max = m
-                iMax = i
-            }
-        }
-
-        memory[iMax] = 0
-        while (max > 0) {
-            iMax = (iMax + 1) % mSize
-            memory[iMax] = memory[iMax] + 1
-            max--
-        }
-
-        var hash = hash(memory)
-        println("hash: $hash")
-
-        if(!secondRound) {
-            if (states.contains(hash)) {
-                println("state to find: $stateToFind")
-                secondRound = true
-                stateToFind = hash
-                lCycle = 1
-            } else {
-                states.add(hash)
-            }
-        } else {
-            if(hash.equals(stateToFind) || lCycle > 6690) {
-                break
-            } else {
-                lCycle++
-            }
-
-        }
+    val toFind = memory.joinToString()
+    var count = 0
+    while(nextHash(memory) != toFind) {
+        count++
     }
 
-    println(states.size)
-
-    println("cycles: $lCycle")
+    println("We need to loop ${states.size} until we reach an existing state and the cycle is $count.")
     s.close()
 }
-
